@@ -1,0 +1,206 @@
+  Scanner leer = new Scanner(System.in).useDelimiter("\n");
+
+    /*
+    Crear un programa que dado un número determine si es par o impar. */
+    public void ejercicio1() {
+        System.out.println("ingrese primer numero");
+        int numero = leer.nextInt();
+        //si
+        if (numero % 2 == 0) {
+            System.out.println("es par");
+            //sino
+        } else {
+            System.out.println("no es par");
+        }
+    }
+
+    /*
+    Crear un programa que pida una frase y si esa frase es igual a “eureka” 
+    el programa pondrá un mensaje de Correcto, sino mostrará un mensaje de Incorrecto. 
+    Nota: investigar la función equals() en Java */
+    public void ejercicio2() {
+        System.out.println("Ingrse una palabra");
+        String frase = leer.next();
+        if (frase.equals("eureka")) {
+            System.out.println("son iguales");
+        } else {
+            System.out.println("no son iguales");
+        }
+    }
+
+    /*
+    Realizar un programa que solo permita introducir frases o palabras de 8 de largo. 
+    Si el usuario ingresa una frase o palabra de 8 de largo se deberá de imprimir un mensaje 
+    por pantalla que diga “CORRECTO”, en caso contrario, se deberá imprimir “INCORRECTO”. 
+    Nota: investigar la función Lenght() en Java. */
+    public void ejercicio3() {
+        System.out.println("Ingrese una frase");
+        String frase = leer.nextLine();
+        int longitud = frase.length();
+        if (frase.length() == 8) {
+            System.out.println("Correcto");
+            System.out.println(longitud);
+        } else {
+            System.out.println("incorrecto");
+            System.out.println(longitud);
+        }
+    }
+
+    /*Escriba un programa que pida una frase o palabra 
+    y valide si la primera letra de esa frase es una ‘A’. 
+    Si la primera letra es una ‘A’, se deberá de imprimir 
+    un mensaje por pantalla que diga “CORRECTO”, en caso contrario, 
+    se deberá imprimir “INCORRECTO”. Nota: investigar la función Substring y equals() de Java */
+    public void ejercicio4() {
+
+        System.out.println("ingrese una frase");
+        String frase = leer.nextLine();
+        if (frase.substring(0, 1).equalsIgnoreCase("A")) {
+            System.out.println("correcto");
+        } else {
+            System.out.println("Incorrecto");
+        }
+    }
+
+    /*
+    Escriba un programa en el cual se ingrese un valor límite positivo, 
+    y a continuación solicite números al usuario hasta que la suma 
+    de los números introducidos supere el límite inicial. */
+    public void ejercicio5() {
+
+        int suma = 0;
+        System.out.println("Ingrese un limite positivo");
+        int limite = leer.nextInt();
+        int numero;
+
+        while (suma <= limite) {
+            System.out.println("ingrese un numero");
+            numero = leer.nextInt();
+            suma += numero;
+            System.out.println(suma);
+        }
+        System.out.println("superaste el limite");
+
+    }
+
+    /*
+    Realizar un programa que pida dos números enteros positivos por teclado 
+    y muestre por pantalla el siguiente menú:El usuario deberá elegir una opción 
+    y el programa deberá mostrar el resultado por pantalla y luego volver al menú. 
+    El programa deberá ejecutarse hasta que se elija la opción 5. Tener en cuenta que, 
+    si el usuario selecciona la opción 5, en vez de salir del programa directamente, 
+    se debe mostrar el siguiente mensaje de confirmación: 
+    ¿Está seguro que desea salir del programa (S/N)? 
+    Si el usuario selecciona el carácter ‘S’ se sale del programa,
+    caso contrario se vuelve a mostrar el menú.
+     */
+    public void ejercicio6() {
+
+        boolean salir = false;
+
+        System.out.println("ingrese primer numero");
+        int numero1 = leer.nextInt();
+        System.out.println("ingrese segundo numero");
+        int numero2 = leer.nextInt();
+
+        do {
+            System.out.println("elija una opcion \n1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Salir");
+            int seleccion = leer.nextInt();
+            switch (seleccion) {
+                case 1:
+                    System.out.println("La suma es " + (numero1 + numero2));
+                    break;
+                case 2:
+                    System.out.println("La resta es " + (numero1 - numero2));
+                    break;
+                case 3:
+                    System.out.println("La multiplicacion es " + (numero1 * numero2));
+                    break;
+                case 4:
+                    System.out.println("La division es " + (numero1 / numero2));
+                    break;
+                case 5:
+                    System.out.println("Desea salir? S/N");
+                    String eleccion = leer.next().toUpperCase();
+                    if (eleccion.equals("S")) {
+                        salir = true;
+                    }
+                    break;
+                default:
+                    System.out.println("opcion no valida");
+            }
+
+        } while (!salir);
+    }
+
+    /*
+    Realizar un programa que simule el funcionamiento de un dispositivo RS232, este tipo de dispositivo 
+    lee cadenas enviadas por el usuario. Las cadenas deben llegar con un formato fijo: 
+    
+            tienen que ser de un máximo de 5 caracteres de largo, 
+            el primer carácter tiene que ser X y el último tiene que ser una O.
+            Las secuencias leídas que respeten el formato se consideran correctas, 
+    
+    la secuencia especial “&&&&&” marca el final de los envíos (llamémosla FDE), 
+    y toda secuencia distinta de FDE, que no respete el formato se considera incorrecta.
+    Al finalizar el proceso, se imprime un informe indicando la cantidad de lecturas correctas 
+    e incorrectas recibidas. Para resolver el ejercicio deberá investigar cómo se utilizan 
+    las siguientes funciones de Java Substring(), Length(), equals(). */
+    public void ejercicio7() {
+        String frase = "", FDE = "&&&&&";
+        int contadorPositivo = 0, contadorNegativo = 0;
+
+        System.out.println("ingrese frase");
+        frase = leer.next().toUpperCase();
+
+        while (!frase.equals(FDE)) {
+
+            if (frase.length() <= 5 && frase.substring(0, 1).equals("X") && frase.substring(frase.length() - 1, frase.length()).equals("O")) {
+                System.out.println("correcto");
+                contadorPositivo++;
+            } else {
+                System.out.println("incorrecto");
+                contadorNegativo++;
+            }
+            System.out.println("ingrese frase");
+            frase = leer.next().toUpperCase();
+        }
+
+        System.out.println("correctas" + contadorPositivo);
+        System.out.println("incorrecto" + contadorNegativo);
+    }
+
+    /*
+    Una obra social tiene tres clases de socios:
+    Los socios tipo ‘A’ abonan una cuota mayor, pero tienen un 50% de descuento en todos los tipos de tratamientos.
+    Los socios tipo ‘B’ abonan una cuota moderada y tienen un 35% de descuento 
+    para los mismos tratamientos que los socios del tipo A.
+    Los socios que menos aportan, los de tipo ‘C’, no reciben descuentos sobre dichos tratamientos.
+    Solicite una letra (carácter) que representa la clase de un socio, 
+    y luego un valor real que represente el costo del tratamiento (previo al descuento) 
+    y determine el importe en efectivo a pagar por dicho socio. */
+    public void extra5() {
+
+        System.out.println("ingrese el tipo de socio");
+        String socio = leer.next().toUpperCase();
+        
+        System.out.println("Ingrese un costo");
+        double costo = leer.nextDouble();
+        
+        switch (socio) {
+            case "A":
+                    double descuentoA = costo *0.5; 
+                    System.out.println("el total a pagar es "+descuentoA);
+                break;
+            case "B":
+                    double descuentoB = costo *0.65; 
+                    System.out.println("el total a pagar es "+descuentoB);
+                break;
+            case "C":
+                System.out.println("el total a pagar es "+costo);
+                break;
+            default:
+                System.out.println("Opcion no valida");  
+        }
+
+    }
