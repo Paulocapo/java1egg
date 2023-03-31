@@ -1,0 +1,68 @@
+Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese cantidad de personas: ");
+        int n = leer.nextInt();
+        muestra(n,leer);
+    }
+    public static void muestra(int n,Scanner leer){
+        String nombre;
+        int edad;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Nombre: ");
+            nombre = leer.next();
+            System.out.print("Edad: ");
+            edad = leer.nextInt();
+            if (edad <18){
+                System.out.println(nombre.toUpperCase() + " es MENOR de edad");
+            } else {
+                System.out.println(nombre.toUpperCase() + " es MAYOR de edad");
+            }
+            System.out.println("Desea seguir con las muestra? Si/No");
+            String resp = leer.next().toUpperCase();
+            if (resp.equals("NO")) {
+            i=n;
+                System.out.println("Salindo del programa");
+            }
+           
+        }
+
+
+
+
+
+otra forma:
+
+
+
+Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese cantidad de personas: ");
+        int n = leer.nextInt();
+        muestra(n,leer);
+    }
+    public static void muestra(int n,Scanner leer){
+        String nombre;
+        int edad;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Nombre: ");
+            nombre = leer.next();
+            System.out.print("Edad: ");
+            edad = leer.nextInt();
+            if (edad <18){
+                System.out.println(nombre.toUpperCase() + " es MENOR de edad");
+            } else {
+                System.out.println(nombre.toUpperCase() + " es MAYOR de edad");
+            }
+            if (i<n-1) {
+            System.out.println("Desea seguir con las muestra? Si/No");
+            String resp;
+            do {
+            resp = leer.next().toUpperCase();
+            }while (!(resp.equals("SI")|| resp.equals("NO")));  
+            if (resp.equals("NO")) {
+                i=n;
+                System.out.println("Saliendo del programa");
+            }
+            } else {
+                System.out.println("Salieno del programa");
+            }
+           
+        }

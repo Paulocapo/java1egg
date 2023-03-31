@@ -1,0 +1,93 @@
+System.out.println("Escriba un número:");
+
+        Scanner leer= new Scanner(System.in);
+        int num1;
+        num1 = leer.nextInt();
+        System.out.println("Escriba otro número:");
+        int num2 = leer.nextInt();
+        if (num2 > 25 || num1 > 25) {
+            System.out.println("Uno de los números es mayor a 25");
+        } else {
+            System.out.println("Los numeros son menores que 25");
+        }
+    }
+
+
+
+
+
+Scanner leer = new Scanner(System.in);
+        int opcion;
+        System.out.println("Elija el tipo de motor");
+        opcion = leer.nextInt();
+        switch (opcion) {
+            case 1:
+                System.out.println("La bomba es una bomba de agua");
+                break;
+            case 2:
+                System.out.println("La bomba es una bomba de gasolina");
+                break;
+            case 3:
+                System.out.println("La bomba es una bomba de hormigón");
+                break;
+                case 4:
+                System.out.println("La bomba es una bomba de pasta alimenticia");
+                break;
+            default:
+                System.out.println("No existe un valor válido para tipo de bomba");
+        }
+    }
+
+
+Scanner leer = new Scanner(System.in);
+        int nota = 0;
+        do {
+            System.out.println("Ingrese una nota:");
+            nota = leer.nextInt();
+
+        } while (!(nota <= 0 || nota <= 10));
+
+        System.out.println("La nota es " + nota);
+    }
+
+Scanner leer = new Scanner(System.in);
+        int vueltas = 0;
+        int suma = 0;
+        int nota = 0;
+        do {
+            System.out.println("Ingrese numero a sumar:");
+            nota = leer.nextInt();
+            suma += nota;
+            vueltas += 1;
+        } while (!(vueltas == 20));
+
+        System.out.println("La suma es " + suma);
+    }
+Esto es lo de la suma
+for (int i = 0; i < 10; i++) {
+            System.out.println("Imprimo el valor de i: " + i);
+        }
+        System.out.println("===================================");
+        System.out.println("For decreciendo");
+        for (int i = 10; i > 0; i--) {
+            System.out.println("Imprimo el valor de i: " + i);
+        }
+    }
+
+int num1;
+        Scanner data = new Scanner(System.in);
+        System.out.println("Escriba un número:");
+                
+        for (int i = 0; i!=4; i++) {
+        num1 = data.nextInt();
+            System.out.print(num1 + " ");
+            for (int j = 0 ;!(j == num1);j++) {
+             System.out.print('*');
+            }
+            System.out.println("");
+        }
+        
+        
+    }
+
+
