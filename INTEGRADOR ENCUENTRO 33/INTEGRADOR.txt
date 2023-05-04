@@ -1,6 +1,6 @@
 // CLASE MAIN
 
-/*
+//*
 Ejercicio integrador
 Una escuela ha terminado su ciclo lectivo y todos sus alumnos ya rindieron el
 examen final. La escuela nos ha pedido que calculemos el promedio de notas
@@ -21,35 +21,36 @@ mayor al promedio.
 Nota: para crear un vector de objetos la definición es la siguiente:
 Objeto nombreVector[] = new Objeto[];
  */
-package intepau5;
+package integradormain;
 
-import entidades.Empleado;
-import servicios.empleadoServicio;
+import entidades.estudiante;
+import servicios.estudianteServicio;
 
 /**
  *
  * @author Paulo
  */
-public class Intepau5 {
+public class Integradormain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        empleadoServicio emple = new empleadoServicio();
-        Empleado[] empleado1 = new Empleado[8];
-        
-        emple.cargarEmpleado(empleado1);
-        emple.calcularPromedio(empleado1);
-        emple.empleadosSueldomayorAlPromedio(empleado1);
+        estudianteServicio estu1 = new estudianteServicio();
+        estudiante[] estudiante1 = new estudiante[2];
+
+        estu1.cargarEstudiante(estudiante1);
+        estu1.calcularPromedio(estudiante1);
+        estu1.estudianteNotamayorAlPromedio(estudiante1);
     }
-    
+
 }
 
 
 // CLASE ENTIDAD
 
 /*
+
  */
 package entidades;
 
@@ -57,17 +58,16 @@ package entidades;
  *
  * @author Paulo
  */
-public class Empleado {
-    
+public class estudiante {
     private String nombre;
-    private double sueldo;
+    private double nota;
 
-    public Empleado() {
+    public estudiante() {
     }
 
-    public Empleado(String nombre, double sueldo) {
+    public estudiante(String nombre, double nota) {
         this.nombre = nombre;
-        this.sueldo = sueldo;
+        this.nota = nota;
     }
 
     public String getNombre() {
@@ -78,82 +78,83 @@ public class Empleado {
         this.nombre = nombre;
     }
 
-    public double getSueldo() {
-        return sueldo;
+    public double getNota() {
+        return nota;
     }
 
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "nombre=" + nombre + ", sueldo=" + sueldo + '}';
+        return "estudiante{" + "nombre=" + nombre + ", nota=" + nota + '}';
     }
     
     
 }
 
 
+
 // CLASE SERVICIO
 
 /*
-
  */
 package servicios;
 
-import entidades.Empleado;
+import entidades.estudiante;
 import java.util.Scanner;
 
 /**
  *
  * @author Paulo
  */
-public class empleadoServicio {
-
+public class estudianteServicio {
     Scanner leer = new Scanner(System.in);
 
-    public void cargarEmpleado(Empleado[] empleado1) {
-        for (int i = 0; i < empleado1.length; i++) {
-            System.out.println("Ingrese el nombre del empleado: ");
+    public void cargarEstudiante(estudiante[] estudiante1) {
+        for (int i = 0; i < estudiante1.length; i++) {
+            System.out.println("Ingrese el nombre del estudiante: ");
             String nombre = leer.next();
-            System.out.println("Ingrese el sueldo:");
+            System.out.println("Ingrese la nota:");
             double sueldo = leer.nextDouble();
-            empleado1[i] = new Empleado(nombre, sueldo);
+            estudiante1[i] = new estudiante(nombre, sueldo);
         }
     }
 
-    public double calcularPromedio(Empleado[] empleado1) {
+    public double calcularPromedio(estudiante[] estudiante1) {
         double suma = 0;
         double promedioSueldo = 0;
-        for (int i = 0; i < empleado1.length; i++) {
-            suma = suma + empleado1[i].getSueldo();
+        for (int i = 0; i < estudiante1.length; i++) {
+            suma = suma + estudiante1[i].getNota();
         }
-        promedioSueldo = suma / empleado1.length;
+        promedioSueldo = suma / estudiante1.length;
         return promedioSueldo;
 
     }
 
-    public void empleadosSueldomayorAlPromedio(Empleado[] empleado1) {
+    public void estudianteNotamayorAlPromedio(estudiante[] estudiante1) {
         int contador = 0;
-        double promedioSueldos = calcularPromedio(empleado1);
-        System.out.println("El promedio de los sueldos es de: " + calcularPromedio(empleado1));
-        for (int i = 0; i < empleado1.length; i++) {
-            if (empleado1[i].getSueldo() > promedioSueldos) {
+        double promedioSueldos = calcularPromedio(estudiante1);
+        System.out.println("El promedio de las notas es de: " + calcularPromedio(estudiante1));
+        for (int i = 0; i < estudiante1.length; i++) {
+            if (estudiante1[i].getNota()> promedioSueldos) {
                 contador++;
             }
         }
-        String[] nombresEmpleados = new String[contador];
+        String[] nombresestudiantes = new String[contador];
         contador = 0;
-        for (int i = 0; i < empleado1.length; i++) {
-            if (empleado1[i].getSueldo() > promedioSueldos) {
-                nombresEmpleados[contador] = empleado1[i].getNombre();
+        for (int i = 0; i < estudiante1.length; i++) {
+            if (estudiante1[i].getNota()> promedioSueldos) {
+                nombresestudiantes[contador] = estudiante1[i].getNombre();
                 contador++;
             }
         }
-        for (String nombre : nombresEmpleados) {
-            System.out.println("El empleado " + nombre + " supera el promedio de los sueldos!");
+        for (String nombre : nombresestudiantes) {
+            System.out.println("El estudiante " + nombre + " supera el promedio de las Notas!");
         }
     }
 }
+
+    
 
