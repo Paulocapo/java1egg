@@ -124,28 +124,28 @@ public class estudianteServicio {
 
     public double calcularPromedio(estudiante[] estudiante1) {
         double suma = 0;
-        double promedioSueldo = 0;
+        double promedionotas = 0;
         for (int i = 0; i < estudiante1.length; i++) {
             suma = suma + estudiante1[i].getNota();
         }
-        promedioSueldo = suma / estudiante1.length;
-        return promedioSueldo;
+        promedionotas = suma / estudiante1.length;
+        return promedionotas;
 
     }
 
     public void estudianteNotamayorAlPromedio(estudiante[] estudiante1) {
         int contador = 0;
-        double promedioSueldos = calcularPromedio(estudiante1);
+        double promedionotas = calcularPromedio(estudiante1);
         System.out.println("El promedio de las notas es de: " + calcularPromedio(estudiante1));
         for (int i = 0; i < estudiante1.length; i++) {
-            if (estudiante1[i].getNota()> promedioSueldos) {
+            if (estudiante1[i].getNota()> promedionotas) {
                 contador++;
             }
         }
         String[] nombresestudiantes = new String[contador];
         contador = 0;
         for (int i = 0; i < estudiante1.length; i++) {
-            if (estudiante1[i].getNota()> promedioSueldos) {
+            if (estudiante1[i].getNota()> promedionotas) {
                 nombresestudiantes[contador] = estudiante1[i].getNombre();
                 contador++;
             }
