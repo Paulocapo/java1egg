@@ -1,0 +1,84 @@
+/*
+ Realizar una baraja de cartas españolas orientada a objetos. Una carta tiene un número entre 1
+y 12 (el 8 y el 9 no los incluimos) y un palo (espadas, bastos, oros y copas). Esta clase debe
+contener un método toString() que retorne el número de carta y el palo. La baraja estará
+compuesta por un conjunto de cartas, 40 exactamente.
+Las operaciones que podrá realizar la baraja son:
+• barajar(): cambia de posición todas las cartas aleatoriamente.
+• siguienteCarta(): devuelve la siguiente carta que está en la baraja, cuando no haya más o
+se haya llegado al final, se indica al usuario que no hay más cartas.
+• cartasDisponibles(): indica el número de cartas que aún se puede repartir.
+• darCartas(): dado un número de cartas que nos pidan, le devolveremos ese número de
+cartas. En caso de que haya menos cartas que las pedidas, no devolveremos nada, pero
+debemos indicárselo al usuario.
+• cartasMonton(): mostramos aquellas cartas que ya han salido, si no ha salido ninguna
+indicárselo al usuario
+• mostrarBaraja(): muestra todas las cartas hasta el final. Es decir, si se saca una carta y
+luego se llama al método, este no mostrara esa primera carta.
+ */
+package guia11ejercicio3;
+
+import Servicios.cartaServicios;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Paulo
+ */
+public class Guia11ejercicio3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       cartaServicios c1 = new cartaServicios();
+
+        Scanner leer = new Scanner(System.in);
+        int var;
+        System.out.println("---JUEGO DE CARTAS---");
+        do {
+            System.out.println("\n Elija una opcion de la baraja :");
+            System.out.println("OPCION 1 : crearBaraja \n"
+                    + "OPCION 2 : Barajar Cartas \n"
+                    + "OPCION 3 : Siguiente Carta \n"
+                    + "OPCION 4 : Cartas Disponibles \n"
+                    + "OPCION 5 : Dar Cartas \n"
+                    + "OPCION 6 : Cartas del Monton \n"
+                    + "OPCION 7 : Mostrar Baraja \n"
+                    + "OPCION 0 : Salir \n");
+            var = leer.nextInt();
+            switch (var) {
+                case 1:
+                    c1.crearBaraja();
+                    break;
+                case 2:
+                    c1.barajarCartas();
+                    break;
+                case 3:
+                    c1.siguienteCarta();
+                    break;
+                case 4:
+                    int cartasDisponibles = c1.cartasDisponibles();
+                    System.out.println("Las cartas Diponibles son : "+ cartasDisponibles);
+                    break;
+                case 5:
+                    c1.darCartas();
+                    break;
+                case 6:
+                    c1.cartasMonton();
+                    break;
+                case 7:
+                    c1.mostrarBaraja();
+                    break;
+                case 0:
+                    System.out.println("Adios.. vuelva pronto.");
+                    break;
+                default:
+                    System.out.println("OPCION INCORRECTA");
+            }
+        } while (var != 0);
+    }
+}
+
+    
+

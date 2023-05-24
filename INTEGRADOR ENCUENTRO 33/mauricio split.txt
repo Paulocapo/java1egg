@@ -1,0 +1,15 @@
+Scanner leer = new Scanner(System.in);
+        
+        System.out.println("Ingrese fecha en el siguiente formato(DD/MM/AAAA): ");
+        String fechaString = leer.nextLine();
+        
+        String[] fechaVector = fechaString.split("/");
+        
+        int dia = Integer.parseInt(fechaVector[0]);
+        int mes = Integer.parseInt(fechaVector[1]);
+        int anio = Integer.parseInt(fechaVector[2]);
+        
+        Date fecha = new Date(anio-1900,mes-1,dia);
+        
+        System.out.println(fecha);
+        
